@@ -24,7 +24,6 @@ const CalendlyAttributesComponent = (props) => {
                   ))}
               </ul>
              </div>:<></>
-
           }
          </div>
     </Theme.Provider>

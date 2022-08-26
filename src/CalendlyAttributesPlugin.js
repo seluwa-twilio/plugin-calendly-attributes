@@ -1,8 +1,7 @@
 import React from 'react';
 import { FlexPlugin } from '@twilio/flex-plugin';
 
-import CustomTaskList from './components/CustomTaskList/CustomTaskList';
-import CalendlyAttributesComponent from './components/CalendlyTaskPanel/CalendlyAttributesComponent';
+import ClientInfoPanel from './components/CalendlyTaskPanel/ClientInfoPanel';
 
 const PLUGIN_NAME = 'CalendlyAttributesPlugin';
 
@@ -19,8 +18,10 @@ export default class CalendlyAttributesPlugin extends FlexPlugin {
    */
   async init(flex, manager) {
     const options = { sortOrder: -1 };
-    flex.AgentDesktopView.Panel1.Content.add(<CustomTaskList key="CalendlyAttributesPlugin-component" />, options);
 
-    flex.TaskInfoPanel.Content.add(<CalendlyAttributesComponent key="calendly-attributes"/>);
+    flex.AgentDesktopView.Panel2.Content.replace(
+      <ClientInfoPanel key ="caller-attributes" />,
+      options
+    );
   }
 }
