@@ -6,7 +6,7 @@ import { CallOutgoingIcon } from '@twilio-paste/icons/esm/CallOutgoingIcon';
 import { Theme }  from '@twilio-paste/core/theme';
 import {styled, css} from '@twilio-paste/styling-library';
 
-const Custom = styled.div(
+const OutboundCallButtonStyler = styled.div(
     css({
         marginLeft: 'space0',
         marginRight: 'space30',
@@ -36,13 +36,13 @@ export const OutboundButton = (props) => {
 
   return (
     <Theme.Provider theme='default'>
-        <Custom>
+        <OutboundCallButtonStyler>
             <Button varinant="secondary" size="circle" onClick={() => {
             console.log('@@ starting outbound call. Attributes: ', outboundCallAttributes);
             Actions.invokeAction('StartOutboundCall', outboundCallAttributes);}}>
                 <CallOutgoingIcon decorative={false} title="" size="sizeIcon40" />
             </Button>
-        </Custom>
+        </OutboundCallButtonStyler>
     </Theme.Provider>
   );
 };
