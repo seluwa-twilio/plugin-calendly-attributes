@@ -24,6 +24,9 @@ const ClientInfoPanel = (props) => {
                         <ListItem>
                             Customer Email - {props.task.attributes.callerEmail}
                         </ListItem>
+                        <ListItem>
+                            Call Start Time - {props.task.attributes.startTime}
+                        </ListItem>
                     </UnorderedList>
 
                     <Table>

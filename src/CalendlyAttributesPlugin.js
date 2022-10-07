@@ -2,6 +2,7 @@ import React from 'react';
 import { FlexPlugin } from '@twilio/flex-plugin';
 
 import ClientInfoPanel from './components/CalendlyTaskPanel/ClientInfoPanel';
+import { OutboundButton } from './components/OutboundButton';
 
 const PLUGIN_NAME = 'CalendlyAttributesPlugin';
 
@@ -17,11 +18,22 @@ export default class CalendlyAttributesPlugin extends FlexPlugin {
    * @param flex { typeof import('@twilio/flex-ui') }
    */
   async init(flex, manager) {
-    const options = { sortOrder: -1 };
+    const options = { 
+      sortOrder: -1
+    };
 
     flex.AgentDesktopView.Panel2.Content.replace(
       <ClientInfoPanel key ="caller-attributes" />,
       options
     );
+    flex.TaskCanvasHeader.Content.add(
+      <OutboundButton key ="outbound-call-button"/>,
+      {
+        sortOrder: 1,
+        if : props => 
+          props.task.taskStatus === 'assigned' &&
+          props.task.attributes.type === 'calendly',
+      } 
+    )
   }
 }
